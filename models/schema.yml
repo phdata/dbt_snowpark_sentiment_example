@@ -80,3 +80,21 @@ models:
         description: Amount of the order (AUD) paid for by gift card
         tests:
           - not_null
+  - name: reviews
+    description: This table stores the reviews for each order
+
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('orders')
+              field: order_id
+        description: This is a unique identifier for an order
+
+      - name: review_text
+        description: text of the review
+      - name: review_sentiment
+        description: sentiment of the review
+        
